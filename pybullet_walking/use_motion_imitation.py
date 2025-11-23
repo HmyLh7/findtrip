@@ -363,14 +363,24 @@ class TerrainEnvironment:
             size: 地形大小 / Terrain size
             max_height: 最大高度变化 / Maximum height variation
         """
-        # 生成随机高度数据
-        # Generate random height data
-        height_data = np.random.uniform(0, max_height, (size, size))
-        
-        # 平滑处理
-        # Smoothing
-        from scipy import ndimage
-        height_data = ndimage.gaussian_filter(height_data, sigma=2)
+        try:
+            # 平滑处理需要 scipy
+            # Smoothing requires scipy
+            from scipy import ndimage
+            
+            # 生成随机高度数据
+            # Generate random height data
+            height_data = np.random.uniform(0, max_height, (size, size))
+            
+            # 平滑处理
+            # Smoothing
+            height_data = ndimage.gaussian_filter(height_data, sigma=2)
+        except ImportError:
+            # 如果没有 scipy，使用简单的随机地形
+            # If scipy is not available, use simple random terrain
+            print("Warning: scipy not installed, using simple random terrain")
+            print("For better terrain, install: pip install scipy")
+            height_data = np.random.uniform(0, max_height, (size, size))
         
         terrain_shape = p.createCollisionShape(
             shapeType=p.GEOM_HEIGHTFIELD,
@@ -477,10 +487,7 @@ def main():
     elif args.terrain == 'stairs':
         TerrainEnvironment.create_stairs_terrain(physics_client)
     elif args.terrain == 'rough':
-        print("崎岖地形需要 scipy 库")
-        print("Rough terrain requires scipy library")
-        print("pip install scipy")
-        TerrainEnvironment.create_flat_terrain(physics_client)
+        TerrainEnvironment.create_rough_terrain(physics_client)
     
     print("\n地形创建完成 / Terrain created")
     print("按 Ctrl+C 退出 / Press Ctrl+C to exit")

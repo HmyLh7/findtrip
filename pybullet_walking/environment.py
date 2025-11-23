@@ -26,7 +26,7 @@ class WalkingEnvironment:
         self.physics_client = None
         self.robot_id = None
         self.plane_id = None
-        self.time_step = 1./240.
+        self.time_step = 1.0 / 240.0
         self.max_steps = 1000
         self.current_step = 0
         

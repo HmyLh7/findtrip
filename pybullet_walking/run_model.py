@@ -9,6 +9,7 @@ import argparse
 import pickle
 import numpy as np
 from environment import WalkingEnvironment
+from policy import SimplePolicy
 
 
 def run_model(model_path='models/walking_model.pkl', episodes=10, render=True):

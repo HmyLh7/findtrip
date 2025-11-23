@@ -70,3 +70,29 @@ scrapy crawlall
 [{"flight_time": [["10:30", "20:50"], ["12:15", "22:20"]], "price": ["\u00a5", "580"], "airports": [["\u9ad8\u5d0e\u56fd\u9645\u673a\u573aT4", "\u5357\u4eac\u7984\u53e3\u56fd\u9645\u673a\u573aT2"], ["\u5357\u4eac\u7984\u53e3\u56fd\u9645\u673a\u573aT2", "\u9996\u90fd\u56fd\u9645\u673a\u573aT2"]], "company": ["\u4e1c\u65b9\u822a\u7a7a", "MU2891", "\u4e1c\u65b9\u822a\u7a7a", "MU728"], "site": "Ctrip"},
 {"flight_time": [["11:05", "17:55"], ["12:50", "19:50"]], "price": ["\u00a5", "610"], "airports": [["\u9ad8\u5d0e\u56fd\u9645\u673a\u573aT4", "\u5408\u80a5\u65b0\u6865\u56fd\u9645\u673a\u573a"], ["\u5408\u80a5\u65b0\u6865\u56fd\u9645\u673a\u573a", "\u9996\u90fd\u56fd\u9645\u673a\u573aT2"]], "company": ["\u4e1c\u65b9\u822a\u7a7a", "MU5169", "\u4e1c\u65b9\u822a\u7a7a", "MU5171"], "site": "Ctrip"},...]
 ```
+
+## PyBullet Walking 机器人行走模拟
+
+本仓库还包含一个 PyBullet 机器人行走模拟项目。
+
+This repository also includes a PyBullet robot walking simulation project.
+
+### 快速开始 / Quick Start
+
+```bash
+cd pybullet_walking
+
+# 安装依赖 / Install dependencies
+pip install -r requirements.txt
+
+# 查看演示 / View demo
+python demo.py
+
+# 训练模型 / Train model
+python train.py --episodes 100
+
+# 使用训练好的模型 / Run with trained model
+python run_model.py
+```
+
+详细文档请查看 / For detailed documentation, see: [pybullet_walking/README.md](pybullet_walking/README.md)
